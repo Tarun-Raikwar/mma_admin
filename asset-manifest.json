@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mma_admin/static/css/main.fe667543.css",
+    "main.js": "/mma_admin/static/js/main.def73a98.js",
+    "index.html": "/mma_admin/index.html",
+    "main.fe667543.css.map": "/mma_admin/static/css/main.fe667543.css.map",
+    "main.def73a98.js.map": "/mma_admin/static/js/main.def73a98.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe667543.css",
+    "static/js/main.def73a98.js"
+  ]
+}
