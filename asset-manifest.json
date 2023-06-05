@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/mma_admin/static/css/main.fe667543.css",
-    "main.js": "/mma_admin/static/js/main.def73a98.js",
-    "index.html": "/mma_admin/index.html",
-    "main.fe667543.css.map": "/mma_admin/static/css/main.fe667543.css.map",
-    "main.def73a98.js.map": "/mma_admin/static/js/main.def73a98.js.map"
+    "main.css": "/static/css/main.38b43cbe.css",
+    "main.js": "/static/js/main.6394376f.js",
+    "static/media/logo.JPG": "/static/media/logo.2274529232ad92b01b29.JPG",
+    "index.html": "/index.html",
+    "main.38b43cbe.css.map": "/static/css/main.38b43cbe.css.map",
+    "main.6394376f.js.map": "/static/js/main.6394376f.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe667543.css",
-    "static/js/main.def73a98.js"
+    "static/css/main.38b43cbe.css",
+    "static/js/main.6394376f.js"
   ]
 }
