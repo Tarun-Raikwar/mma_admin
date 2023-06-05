@@ -1,0 +1,13 @@
+.AgentCard{
+    /* border: 2px solid red; */
+    margin-bottom: 8px;
+    box-shadow: 0px 0px 5px 0px rgb(168, 168, 168);
+    padding: 10px;
+    background-color: white;
+}
+
+.AgentCard:hover{
+    cursor: pointer;
+    background-color: rgb(228, 225, 225);
+    /* color: white; */
+}
