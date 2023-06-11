@@ -27,6 +27,7 @@ const Assign = ({ handleupdateAgentPendingWork, AgentDetail }) => {
     const submit = () => {
         if(fData.name === "" || fData.fi_type === "" || fData.case_no === "" || fData.address === ""){
             setIsAllFilled(false);
+            
         }
         else{
             setAssigning(true);
