@@ -10,9 +10,7 @@ const Assign = ({ handleupdateAgentPendingWork, AgentDetail }) => {
 
     const [fData, setFData] = useState({
         name: "",
-        dob: "",
         address: "",
-        age: "",
         fi_type: "",
         case_no: "",
     });
@@ -102,29 +100,11 @@ const Assign = ({ handleupdateAgentPendingWork, AgentDetail }) => {
                     }}
                 />
                 <input 
-                    type="date" 
-                    placeholder="DOB"
-                    value={fData.dob}
-                    onChange={(e) => {
-                        setFData({...fData, dob: e.target.value});
-                        setIsAllFilled(true);
-                    }}    
-                />
-                <input 
                     type="text" 
                     placeholder="Address"
                     value={fData.address}
                     onChange={(e) => {
                         setFData({...fData, address: e.target.value});
-                        setIsAllFilled(true);
-                    }}    
-                />
-                <input 
-                    type="number" 
-                    placeholder="Age"
-                    value={fData.age}
-                    onChange={(e) => {
-                        setFData({...fData, age: e.target.value});
                         setIsAllFilled(true);
                     }}    
                 />
