@@ -18,16 +18,14 @@ const Assign = ({ handleupdateAgentPendingWork, AgentDetail }) => {
     useEffect(() => {
         setFData({
             name: "",
-            dob: "",
             address: "",
-            age: "",
             fi_type: "",
             case_no: "",
         })
     }, [AgentDetail]);
 
     const submit = () => {
-        if(fData.name === "" || fData.fi_type === "" || fData.case_no === "" || fData.address === "" || fData.dob === "" || fData.age === ""){
+        if(fData.name === "" || fData.fi_type === "" || fData.case_no === "" || fData.address === ""){
             setIsAllFilled(false);
         }
         else{
