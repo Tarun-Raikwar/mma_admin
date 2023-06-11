@@ -2,6 +2,7 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+    padding: 20px 0px;
 }
 
 .notification{
@@ -32,7 +33,7 @@
     font-size: 1rem;
 }
 
-.error{
+.notification .error{
     background-color: red;
     color: white;
     width: 60%;
@@ -133,8 +134,16 @@ input:focus{
 }
 
 .pdf_heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.pdf_heading p{
     font-size: 2rem;
     margin: 40px 0px;
+    padding-left: 10px;
 }
 
 .section_heading{
@@ -167,4 +176,11 @@ input:focus{
 .pdf_images img{
     height: 250px;
     margin: 5px;
+}
+
+.fill_details{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 50px;
 }

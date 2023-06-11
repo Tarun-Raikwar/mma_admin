@@ -7,11 +7,12 @@
 
 .mainBody {
     flex-grow: 1;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 20px;
     display: flex;
     justify-content: space-around;
     overflow: hidden;
+    /* border: 2px solid red; */
 }
 
 .selectAgent {

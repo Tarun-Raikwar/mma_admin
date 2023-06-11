@@ -1,8 +1,7 @@
 .AgentContainer{
     height: 100%;
-    width: 70%;
+    width: 79%;
     box-shadow: 0.5px 0.5px 5px 0px rgb(168, 168, 168);
-    padding: 20px;
     display: flex;
     /* border: 1px solid black; */
 }
@@ -12,37 +11,73 @@
     flex-direction: column;
     height: 100%;
     width: 50%;
+    padding: 5px 10px;
     overflow: hidden;
+    align-items: center;
 }
 
 .intro{
+    width: 90%;
     display:  flex;
     justify-content: space-between;
-    height: 120px;
-    /* border: 0.5px solid rgb(226, 222, 222); */
-    padding-bottom: 20px;
-    height: 25%;
+    margin: 10px 0px;
+    padding: 15px;
+    box-shadow: 0.5px 0.5px 5px 0px rgb(168, 168, 168);
+    height: 24%;
 }
+
+
+
+
 
 .intro table{
-    border-collapse: collapse;
-    /* height: 100px;
-    border: 1px solid red; */
+    /* border: 2px solid black; */
 }
-
 .intro td{
-    padding: 0px 20px;
     /* border: 2px solid red; */
-    font-size: small;
+    font-size: 13px;
 }
-
 .value{
+    padding-left: 20px;
     font-weight: lighter;
 }
 
-.intro tr:hover{
-    background-color: rgb(228, 225, 225);
+
+
+
+
+
+
+.intro .buttons{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.intro .button button{
+    border: none;
+    width: 100%;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.intro .button button:hover{
+    cursor: pointer;
+}
+.assign{
+    background-color: black;
+}
+.pending_button{
+    background-color: red;
+}
+.done_button{
+    background-color: green;
+}
+
+
+
+
 
 
 .work{
@@ -50,35 +85,47 @@
     /* padding-top: 20px; */
     font-size: small;
     height: 75%;
+    width: 100%;
 }
 
 .pending{
-    width: 50%;
-    /* border: 1px solid red; */
+    width: 100%;
+    /* border: 0.5px solid red; */
     display: flex;
     flex-direction: column;
 }
 
 .done{
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    /* border: 1px solid red; */
+    /* border: 0.5px solid green; */
 }
 
 
-.heading{
+.done .heading{
+    /* background-color: green; */
     text-align: center;
+    color: green;
+    padding: 5px;
+}
+.pending .heading{
+    /* background-color: red; */
+    text-align: center;
+    color: red;
+    padding: 5px;
 }
 
 .content{
-    padding: 0px 2px; 
+    padding: 10px; 
     flex-grow: 1;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
     /* border: 1px solid red; */
 }
+
+
 
 .content::-webkit-scrollbar {
     display: none;

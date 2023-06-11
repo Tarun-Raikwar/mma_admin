@@ -3,6 +3,7 @@ import "./Agent.css"
 import ClientCard from "./clientCard";
 import Form from "./form";
 import Assign from "./assign";
+import Deleting from "../Deleting";
 
 const Agent = ({ handleUpdateAgent, setAgent }) => {
     const [AgentData, setAgentData] = useState(null);
@@ -12,7 +13,14 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
     const [pendingLoading, setPendingLoading] = useState(true);
     const [form, setForm] = useState(null);
     const [assigning, setAssigning] = useState(false);
+    const [showPending, setShowPending] = useState(true);
+    const [showDone, setShowDone] = useState(false);
 
+    const [isDeleting, setIsDeleting] = useState(false);
+
+
+
+    //Intitial loading
     useEffect(() => {
         setAgentData(setAgent);
         setPendingLoading(true);
@@ -20,6 +28,8 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
         setForm(null);
         setAssigning(false);
 
+
+        //fetcing verified data
         fetch("https://mma-server.onrender.com/findForm", {
             method: "POST",
             headers: {
@@ -29,12 +39,13 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setDoneLoading(false);
                 setDone(data.fetchedData);
             })
             .catch(err => console.log(err))
 
+
+        //fetching pending data
         fetch("https://mma-server.onrender.com/findForm", {
             method: "POST",
             headers: {
@@ -51,72 +62,194 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
 
     }, [setAgent]);
 
+
+    //shown client form
     const handleForm = (selectedFrom) => {
         setAssigning(false);
         setForm(selectedFrom);
     }
 
+    //update work pending work
     const updateAgentPendingWork = (UpdatedPendingWork) => {
-        const updatedAgent = {...setAgent, Pending: UpdatedPendingWork};
+        const updatedAgent = { ...setAgent, Pending: UpdatedPendingWork };
         handleUpdateAgent(updatedAgent);
     }
 
+
+    //delete pending form
+    const delete_pending_form = (ind) => {
+        setIsDeleting(true);
+        fetch("https://mma-server.onrender.com/delete_form", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({"id": setAgent.Pending[ind]})
+        })
+            .then(res => res.json())
+            .then(data => {
+
+
+                if(data.status === "false"){
+                    console.log("failed");
+                    return;
+                }
+
+
+                fetch("https://mma-server.onrender.com/updateAgent", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({agentId: AgentData._id, update: {"Pending": [...setAgent.Pending.slice(0, ind), ...setAgent.Pending.slice(ind + 1, pending.length)]}})
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        let pendingWork = [...setAgent.Pending.slice(0, ind), ...setAgent.Pending.slice(ind + 1, pending.length)];
+                        updateAgentPendingWork(pendingWork);
+                        console.log("delete");
+                        setIsDeleting(false);
+                    })
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log("initial failed"))
+    }
+
+
+
+
+    //delete verified form
+    const delete_verified_form = (ind) => {
+        setIsDeleting(true);
+        fetch("https://mma-server.onrender.com/delete_form", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({"id": setAgent.Done[ind]})
+        })
+            .then(res => res.json())
+            .then(data => {
+
+
+                if(data.status === "false"){
+                    console.log("failed");
+                    return;
+                }
+
+
+                fetch("https://mma-server.onrender.com/updateAgent", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({agentId: AgentData._id, update: {"Done": [...setAgent.Done.slice(0, ind), ...setAgent.Done.slice(ind + 1, done.length)]}})
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        let doneWork = [...setAgent.Done.slice(0, ind), ...setAgent.Done.slice(ind + 1, pending.length)];
+                        updateAgentPendingWork(doneWork);
+                        console.log("delete");
+                        setIsDeleting(false);
+                    })
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log("initial failed"))
+    }
+
+
+    //component
     return (
         <div className="AgentContainer">
             {AgentData && (<div className="Agent">
                 <div className="intro">
                     <table>
-                        <tr>
-                            <td>Name</td>
-                            <td className="value">{AgentData.Name}</td>
-                        </tr>
-                        <tr>
-                            <td>Username</td>
-                            <td className="value">{AgentData.Username}</td>
-                        </tr>
-                        <tr>
-                            <td>Adhar no</td>
-                            <td className="value">{AgentData.Adharno}</td>
-                        </tr>
-                        <tr>
-                            <td>DOB</td>
-                            <td className="value">{AgentData.DOB}</td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td className="value">{AgentData.Name}</td>
+                            </tr>
+                            <tr>
+                                <td>DOB</td>
+                                <td className="value">{AgentData.DOB}</td>
+                            </tr>
+                            <tr>
+                                <td>Adharno</td>
+                                <td className="value">{AgentData.Adharno}</td>
+                            </tr>
+                            <tr>
+                                <td>Username</td>
+                                <td className="value">{AgentData.Username}</td>
+                            </tr>
+                            <tr>
+                                <td>password</td>
+                                <td className="value">{AgentData.Pass}</td>
+                            </tr>
+                        </tbody>
                     </table>
 
-                    <div className="button">
-                        <button onClick={() => {
-                            setAssigning(true);
-                        }}>+ assign</button>
+
+                    <div className="buttons">
+                        <div className="button">
+                            <button className="assign" onClick={() => {
+                                setAssigning(true);
+                            }}>+ Assign</button>
+                        </div>
+                        <div className="button">
+                            <button className="pending_button" onClick={() => {
+                                setShowPending(true);
+                                setShowDone(false);
+                            }}>Show pending</button>
+                        </div>
+                        <div className="button">
+                            <button className="done_button" onClick={() => {
+                                setShowDone(true);
+                                setShowPending(false);
+                            }}>Show verified</button>
+                        </div>
                     </div>
                 </div>
 
                 <div className="work">
-                    <div className="done">
+                    {showDone && <div className="done">
                         <p className="heading">verified work</p>
-                        <div className={"content" + ((doneLoading || (done && done.length === 0)) ? " center": "")}>
+                        <div className={"content" + ((doneLoading || (done && done.length === 0)) ? " center" : "")}>
                             {doneLoading && <p>Loading...</p>}
-                            {(!doneLoading && done && done.length > 0) && (done.map((client) => {
-                                return <ClientCard client={client} handleForm={handleForm}/>
+                            {(!doneLoading && done && done.length > 0) && (done.map((client, i) => {
+                                return <ClientCard
+                                    client={client}
+                                    handleForm={handleForm}
+                                    delete_form={delete_verified_form}
+                                    index={i}
+                                    key={client._id}
+                                />
                             }))}
                             {(!doneLoading && done && done.length === 0) && <p>No data</p>}
                         </div>
-                    </div>
-                    <div className="pending">
-                        <p className="heading">pending work</p>
-                        <div className={"content" + ((pendingLoading || (pending && pending.length === 0)) ? " center": "")}>
+                    </div>}
+                    {showPending && <div className="pending">
+                        <p className="heading">Pending work</p>
+                        <div className={"content" + ((pendingLoading || (pending && pending.length === 0)) ? " center" : "")}>
                             {pendingLoading && <p>Loading...</p>}
-                            {(!pendingLoading && pending && pending.length > 0) && (pending.map((client) => {
-                                return <ClientCard client={client} handleForm={handleForm}/>
+                            {(!pendingLoading && pending && pending.length > 0) && (pending.map((client, i) => {
+                                return <ClientCard
+                                    client={client}
+                                    handleForm={handleForm}
+                                    delete_form={delete_pending_form}
+                                    index={i}
+                                    key={client._id}
+                                />
                             }))}
                             {(!pendingLoading && pending && pending.length === 0) && <p>No data</p>}
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>)}
-            
-            {assigning && <Assign handleupdateAgentPendingWork={updateAgentPendingWork} AgentDetail={setAgent}/>}
-            {(!assigning && form) && <Form Selectedclient={form}/>}
+
+            {assigning && <Assign handleupdateAgentPendingWork={updateAgentPendingWork} AgentDetail={setAgent} />}
+            {(!assigning && form) && <Form Selectedclient={form} />}
+
+            {isDeleting && <Deleting />}
 
         </div>
     );

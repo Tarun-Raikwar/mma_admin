@@ -11,3 +11,15 @@
     background-color: rgb(228, 225, 225);
     /* color: white; */
 }
+
+.value{
+    /* border: 2px solid red; */
+    font-weight: lighter;
+    padding-left: 20px;
+}
+
+.AgentCard td{
+    /* border: 2px solid red; */
+    padding-bottom: 1px;
+    font-size: 13px;
+}

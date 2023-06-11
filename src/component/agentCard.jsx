@@ -2,15 +2,27 @@ import "./agentCard.css"
 
 const AgentCard = (props) => {
     const data = props.agentData;
-    console.log(data);
     const setCurrentAgentData = () => {
         props.handleCurrentAgent(data);
     }
     return(
         <div className="AgentCard" onClick={setCurrentAgentData}>  
-            <p>UserName: {data.Username}</p>
-            <p>Name: {data.Name}</p>
-            <p>DOB: {data.DOB}</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td className="value">:  {data.Name}</td>
+                    </tr>
+                    <tr>
+                        <td>DOB</td>
+                        <td className="value">:  {data.DOB}</td>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td className="value">:  {data.Username}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }

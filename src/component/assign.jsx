@@ -48,12 +48,12 @@ const Assign = ({ handleupdateAgentPendingWork, AgentDetail }) => {
                 if(data_res.status === true){
                     const PendingWork = [...AgentDetail.Pending, data_res.id];
     
-                    fetch("https://mma-server.onrender.com/AssignWork", {
+                    fetch("https://mma-server.onrender.com/updateAgent", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
                         },
-                        body: JSON.stringify({agentId: AgentDetail._id, PendingWork})
+                        body: JSON.stringify({agentId: AgentDetail._id, update: {Pending: PendingWork}})
                     })
                     .then(res => res.json())
                     .then(res => {
@@ -84,7 +84,7 @@ const Assign = ({ handleupdateAgentPendingWork, AgentDetail }) => {
 
     return(
         <div className="Assigning">
-            <p className="heading">Assign Work</p>
+            <p className="heading">Assign work</p>
 
             {assigning && <p className="message assigning">Assigning...</p>}
             {assigned && <p className="message assigned">Successfully assign</p>}

@@ -34,7 +34,7 @@ const FieldAgent = (props) => {
             {data && (
                 <div className="button">
                     <Link to="/Addagent">
-                        <button>+ add agent</button>
+                        <button>+ Add agent</button>
                     </Link>
                 </div>
             )}

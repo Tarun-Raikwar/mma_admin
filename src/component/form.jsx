@@ -3,6 +3,7 @@ import React from "react";
 import { useRef } from "react";
 import { useEffect, useState } from "react";
 import { useReactToPrint } from "react-to-print";
+import image from "./logo.png";
 
 
 const Form = ({ Selectedclient }) => {
@@ -50,7 +51,10 @@ const Form = ({ Selectedclient }) => {
         render() {
             return (
                 <div className="pdf">
-                    <p className="pdf_heading">Master Management Associate</p>
+                    <div className="pdf_heading">
+                        <img src={image} alt="" />
+                        <p>Master Management Associate</p>
+                    </div>
 
                     <p className="section_heading">Basic details</p>
                     <table>
@@ -275,6 +279,11 @@ const Form = ({ Selectedclient }) => {
                         {item.image && item.image.map((image) => {
                             return <img src={"data:image/png;base64," + image} alt="" />
                         })}
+                    </div>
+                    
+                    <div className="fill_details">
+                        <p>Location coordinats : {item.location}</p>
+                        <p>verification time : {item.date}</p>
                     </div>
                 </div>
             )
