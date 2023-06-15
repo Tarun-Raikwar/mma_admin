@@ -78,6 +78,7 @@ legend{
 input{
     border: none;
     margin-left: 5px;
+    width: 95%;
 }
 
 input:focus{

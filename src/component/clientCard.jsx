@@ -25,8 +25,8 @@ const ClientCard = ({ client, handleForm, delete_form, index, isPending }) => {
                             <td>{client.address}</td>
                         </tr>
                         <tr>
-                            <td>Age</td>
-                            <td>{client.age}</td>
+                            <td>Case no</td>
+                            <td>{client.case_no}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -8,7 +8,8 @@
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
-    /* background-color: rgb(247, 250, 250); */
+    background-color: white;
+    border-radius: 5px;
 }
 
 .fieldAgent::-webkit-scrollbar {

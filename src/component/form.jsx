@@ -839,6 +839,17 @@ const Form = ({ Selectedclient }) => {
                         }}
                     />
                 </fieldset>
+                <fieldset>
+                    <legend>Remarks</legend>
+                    <input
+                        type="text"
+                        value={client.Status}
+                        onChange={(e) => {
+                            setClient({ ...client, Status: e.target.value });
+                            setUpdate({ ...update, Status: e.target.value });
+                        }}
+                    />
+                </fieldset>
 
                 <div className="images">
                     {client.image && client.image.map((image) => {
