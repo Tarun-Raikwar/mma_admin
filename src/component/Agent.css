@@ -15,11 +15,11 @@
     width: 50%;
     padding: 5px 10px;
     overflow: hidden;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .intro{
-    width: 90%;
+    width: 85%;
     display:  flex;
     justify-content: space-between;
     border-radius: 5px;
@@ -27,9 +27,8 @@
     padding: 15px;
     box-shadow: 0.5px 0.5px 5px 0px rgb(168, 168, 168);
     height: 24%;
+    margin-left: 15px;
 }
-
-
 
 
 

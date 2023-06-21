@@ -3,7 +3,7 @@ import "./Agent.css"
 import ClientCard from "./clientCard";
 import Form from "./form";
 import Assign from "./assign";
-import Deleting from "../Deleting";
+import Deleting from "./Deleting";
 
 const Agent = ({ handleUpdateAgent, setAgent }) => {
     const [AgentData, setAgentData] = useState(null);

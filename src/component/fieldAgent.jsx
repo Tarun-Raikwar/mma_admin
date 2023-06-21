@@ -15,6 +15,7 @@ const FieldAgent = (props) => {
         .then(Agentdata => {
             setLoading(false);
             setData(Agentdata);
+            props.handleSetagentdata(Agentdata);
         })
         .catch(err => {
             console.log(err);

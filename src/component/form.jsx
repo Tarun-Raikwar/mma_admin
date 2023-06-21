@@ -843,10 +843,10 @@ const Form = ({ Selectedclient }) => {
                     <legend>Remarks</legend>
                     <input
                         type="text"
-                        value={client.Status}
+                        value={client.remarks || ""}
                         onChange={(e) => {
-                            setClient({ ...client, Status: e.target.value });
-                            setUpdate({ ...update, Status: e.target.value });
+                            setClient({ ...client, remarks: e.target.value });
+                            setUpdate({ ...update, remarks: e.target.value });
                         }}
                     />
                 </fieldset>

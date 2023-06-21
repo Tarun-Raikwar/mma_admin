@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import Navbar from './navbar';
 import FieldAgent from './fieldAgent';
@@ -19,6 +19,15 @@ function Home() {
     setCurrUpdateAgent(updatedAgent);
   }
 
+  const[AgentData, setAgentdata] = useState({});
+  const handleSetagentdata = (data) => {
+      let newData = {};
+      data.map((client) => {
+        newData[client.Username] = client.Pending;
+        return 0;
+      });
+      setAgentdata(newData);
+  }
 
   if(!sessionStorage.getItem('username') || !sessionStorage.getItem('password')){
     // console.log(adminCredential);
@@ -27,9 +36,15 @@ function Home() {
 
   return (
     <div className='Body'>
-      <Navbar />
+      <Navbar 
+        Agentdata={AgentData}
+      />
       <div className='mainBody'>
-        <FieldAgent setCurrupdatedAgent={currupadateAgent} handleCurrentAgentShownApp={CurrentAgentShownApp}/>
+        <FieldAgent 
+          setCurrupdatedAgent={currupadateAgent} 
+          handleCurrentAgentShownApp={CurrentAgentShownApp}
+          handleSetagentdata={handleSetagentdata}
+        />
         {currentAgent ? <Agent handleUpdateAgent={UpdateAgent} setAgent={currentAgent}/>: (
           <div className="selectAgent">
             <p>Select agent</p>
