@@ -86,6 +86,7 @@ const GroupAssign = ({ handleGroupAssign, AgentData }) => {
 
                 Status: "",
                 date: "",
+                remarks: "",
                 image: null
             }
         })

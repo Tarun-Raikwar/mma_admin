@@ -122,6 +122,7 @@ const Assign = ({ handleupdateAgentPendingWork, AgentDetail }) => {
     
             Status: "",
             date: "",
+            remarks: "",
             image: null
         })
     }, [AgentDetail]);

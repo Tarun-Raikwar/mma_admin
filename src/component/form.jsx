@@ -13,6 +13,7 @@ const Form = ({ Selectedclient }) => {
     const [editting, setEditting] = useState(false);
     const [editted, setEditted] = useState(false);
     const [error, setError] = useState(false);
+    console.log(Selectedclient);
 
     useEffect(() => {
         setClient(Selectedclient);
