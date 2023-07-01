@@ -11,15 +11,15 @@ const AgentCard = (props) => {
                 <tbody>
                     <tr>
                         <td>Name</td>
-                        <td className="value">:  {data.Name}</td>
+                        <td className="value">  {data.Name}</td>
                     </tr>
                     <tr>
                         <td>DOB</td>
-                        <td className="value">:  {data.DOB}</td>
+                        <td className="value">  {data.DOB}</td>
                     </tr>
                     <tr>
                         <td>Username</td>
-                        <td className="value">:  {data.Username}</td>
+                        <td className="value">  {data.Username}</td>
                     </tr>
                 </tbody>
             </table>

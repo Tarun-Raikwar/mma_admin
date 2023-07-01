@@ -10,6 +10,7 @@ const GroupAssign = ({ handleGroupAssign, AgentData }) => {
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
+    let groupAssigncount = 0;
 
     const handleFileUpload = (e) => {
         const reader = new FileReader();
@@ -102,24 +103,29 @@ const GroupAssign = ({ handleGroupAssign, AgentData }) => {
         })
         .then(res => res.json())
         .then(res => {
+            let updatedPendingWork = {};
+            res.data.map((client, i) => {
+                updatedPendingWork[data[i]["Agent"]] = AgentData[data[i]["Agent"]];
+            })
+            res.data.map((client, i) => {
+                updatedPendingWork[data[i]["Agent"]] = [...updatedPendingWork[data[i]["Agent"]], client._id]
+            })
 
             if(res.status === "true"){
-                res.data.map((client, i) => {
-                    
-                    const PendingWork = [...AgentData[data[i]["Agent"]], client._id];
-                    AgentData[data[i]["Agent"]] = PendingWork;
-
+                Object.keys(updatedPendingWork).map((key) => {
                     fetch("https://mma-server.onrender.com/updateAgent", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
                         },
-                        body: JSON.stringify({agentId: {Username: data[i]["Agent"]}, update: { Pending: PendingWork }})
+                        body: JSON.stringify({agentId: {Username: key}, update: { Pending: updatedPendingWork[key] }})
                     })
                     .then(res1 => res1.json())
                     .then(res1 => {
-                        setLoading(false);
-                        if(i === (res.length-1)){
+                        groupAssigncount = groupAssigncount + 1;
+                        if(groupAssigncount === Object.keys(updatedPendingWork).length){
+                            groupAssigncount = 0;
+                            setLoading(false);
                             setSubmitted(true);
                             window.location.reload();
                         }

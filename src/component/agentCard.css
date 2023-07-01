@@ -1,7 +1,8 @@
 .AgentCard{
     /* border: 2px solid red; */
     margin-bottom: 8px;
-    box-shadow: 0px 0px 5px 0px rgb(168, 168, 168);
+    box-shadow: 0px 0px 2px 0px rgb(168, 168, 168);
+    border-radius: 5px;
     padding: 10px;
     background-color: white;
 }

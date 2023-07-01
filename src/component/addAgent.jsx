@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./addAgent.css"
-import Navbar from "./navbar";
 
 const Addagent = () => {
 
@@ -8,22 +7,17 @@ const Addagent = () => {
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
     const [isAllFilled, setIsAllFilled] = useState(false);
-    const [isPassSame, setIsPassSame] = useState(false);
     const [data, setData] = useState({
         Name: "",
         DOB: "",
         AdharNo: "",
         UserName: "",
-        Pass: "",
-        ConfirmPass: ""
+        Pass: ""
     })
 
     const submit = () => {
         if (data.Name === "" || data.DOB === "" || data.AdharNo === "" || data.Pass === "" || data.ConfirmPass === "") {
             setIsAllFilled(true);
-        }
-        else if (data.Pass !== data.ConfirmPass) {
-            setIsPassSame(true);
         }
         else {
             setSubmitting(true);
@@ -60,84 +54,65 @@ const Addagent = () => {
 
     return (
         <div className="container">
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="Addagent_container">
-                {submitting && <p className="submitting">Please wait...</p>}
-                {submitted && <p className="submitted">Successfully submitted</p>}
-                {error && <p className="Add_error">Error</p>}
-                {isAllFilled && <p className="Add_error">All fields are mandatory</p>}
-                {isPassSame && <p className="Add_error">Password doesn't match</p>}
+                {submitting && <p className="submitting message">Please wait...</p>}
+                {submitted && <p className="submitted message">Successfully submitted</p>}
+                {error && <p className="Add_error message">Error</p>}
+                {isAllFilled && <p className="Add_error message">All fields are mandatory</p>}
                 <div className="Addagent">
-                    <p>Add new agent</p>
+                    <p className="Heading">Add new agent</p>
 
-                    <fieldset>
-                        <legend>Name</legend>
-                        <input
-                            type="text"
-                            value={data.Name}
-                            onChange={(e) => {
-                                setData({ ...data, Name: e.target.value });
-                                setIsAllFilled(false);
-                            }}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <legend>DOB</legend>
-                        <input
-                            type="date"
-                            value={data.DOB}
-                            onChange={(e) => {
-                                setData({ ...data, DOB: e.target.value });
-                                setIsAllFilled(false);
-                            }}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <legend>Adhar no</legend>
-                        <input
-                            type="number"
-                            value={data.AdharNo}
-                            onChange={(e) => {
-                                setData({ ...data, AdharNo: e.target.value });
-                                setIsAllFilled(false);
-                            }}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <legend>Username</legend>
-                        <input
-                            type="text"
-                            value={data.UserName}
-                            onChange={(e) => {
-                                setData({ ...data, UserName: e.target.value });
-                                setIsAllFilled(false);
-                            }}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <legend>Password</legend>
-                        <input
-                            type="text"
-                            value={data.Pass}
-                            onChange={(e) => {
-                                setData({ ...data, Pass: e.target.value });
-                                setIsAllFilled(false);
-                                setIsPassSame(false);
-                            }}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <legend>Confirm Password</legend>
-                        <input
-                            type="text"
-                            value={data.ConfirmPass}
-                            onChange={(e) => {
-                                setData({ ...data, ConfirmPass: e.target.value });
-                                setIsAllFilled(false);
-                                setIsPassSame(false);
-                            }}
-                        />
-                    </fieldset>
+                    <p className="input_type">Name</p>
+                    <input
+                        type="text"
+                        value={data.Name}
+                        onChange={(e) => {
+                            setData({ ...data, Name: e.target.value });
+                            setIsAllFilled(false);
+                        }}
+                    />
+
+                    <p className="input_type">DOB</p>
+                    <input
+                        type="date"
+                        value={data.DOB}
+                        onChange={(e) => {
+                            setData({ ...data, DOB: e.target.value });
+                            setIsAllFilled(false);
+                        }}
+                    />
+
+                    <p className="input_type">Adhar no</p>
+                    <input
+                        type="number"
+                        value={data.AdharNo}
+                        onChange={(e) => {
+                            setData({ ...data, AdharNo: e.target.value });
+                            setIsAllFilled(false);
+                        }}
+                    />
+
+                    <p className="input_type">Username</p>
+                    <input
+                        type="text"
+                        value={data.UserName}
+                        onChange={(e) => {
+                            setData({ ...data, UserName: e.target.value });
+                            setIsAllFilled(false);
+                        }}
+                    />
+
+                    <p className="input_type">Password</p>
+                    <input
+                        type="text"
+                        value={data.Pass}
+                        onChange={(e) => {
+                            setData({ ...data, Pass: e.target.value });
+                            setIsAllFilled(false);
+                        }}
+                    />
+
 
                     <div className="button_Addagent">
                         <button onClick={submit}>Add agent</button>
