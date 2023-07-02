@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import Navbar from './navbar';
 import FieldAgent from './fieldAgent';
@@ -30,7 +30,6 @@ function Home() {
   }
 
   if(!sessionStorage.getItem('username') || !sessionStorage.getItem('password')){
-    // console.log(adminCredential);
     return <Navigate replace to="/login"/>
   }
 

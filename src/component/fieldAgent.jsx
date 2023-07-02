@@ -10,11 +10,18 @@ const FieldAgent = (props) => {
     const [error, setError] = useState(false);
 
     useEffect(()=>{
-        fetch("https://mma-server.onrender.com/FieldAgentData")
+        fetch("https://mma-server.onrender.com/FieldAgentData", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}})
+        })
         .then(res => res.json())
         .then(Agentdata => {
+            console.log(Agentdata);
             setLoading(false);
-            setData(Agentdata);
+            if(!Agentdata.status || Agentdata.status !== "false") setData(Agentdata);
             props.handleSetagentdata(Agentdata);
         })
         .catch(err => {

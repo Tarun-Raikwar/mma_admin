@@ -35,7 +35,7 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(setAgent.Done)
+            body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : setAgent.Done})
         })
             .then(res => res.json())
             .then(data => {
@@ -51,7 +51,7 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(setAgent.Pending)
+            body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : setAgent.Pending})
         })
             .then(res => res.json())
             .then(data => {
@@ -84,7 +84,7 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({"id": setAgent.Pending[ind]})
+            body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : {"id": setAgent.Pending[ind]}})
         })
             .then(res => res.json())
             .then(data => {
@@ -101,7 +101,7 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({agentId: AgentData._id, update: {"Pending": [...setAgent.Pending.slice(0, ind), ...setAgent.Pending.slice(ind + 1, pending.length)]}})
+                    body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : {agentId: AgentData._id, update: {"Pending": [...setAgent.Pending.slice(0, ind), ...setAgent.Pending.slice(ind + 1, pending.length)]}}})
                 })
                     .then(res => res.json())
                     .then(data => {
@@ -126,7 +126,7 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({"id": setAgent.Done[ind]})
+            body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : {"id": setAgent.Done[ind]}})
         })
             .then(res => res.json())
             .then(data => {
@@ -143,7 +143,7 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({agentId: AgentData._id, update: {"Done": [...setAgent.Done.slice(0, ind), ...setAgent.Done.slice(ind + 1, done.length)]}})
+                    body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : {agentId: AgentData._id, update: {"Done": [...setAgent.Done.slice(0, ind), ...setAgent.Done.slice(ind + 1, done.length)]}}})
                 })
                     .then(res => res.json())
                     .then(data => {

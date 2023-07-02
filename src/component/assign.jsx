@@ -140,7 +140,7 @@ const Assign = ({ handleupdateAgentPendingWork, AgentDetail }) => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify([fData])
+                body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : [fData]})
             })
                 .then(res => res.json())
                 .then(data_res => {
@@ -154,7 +154,8 @@ const Assign = ({ handleupdateAgentPendingWork, AgentDetail }) => {
                             headers: {
                                 "Content-Type": "application/json"
                             },
-                            body: JSON.stringify({ agentId: { _id: AgentDetail._id }, update: { Pending: PendingWork } })
+                            body: JSON.stringify(
+                                {Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : { agentId: { _id: AgentDetail._id }, update: { Pending: PendingWork } }})
                         })
                             .then(res => res.json())
                             .then(res => {

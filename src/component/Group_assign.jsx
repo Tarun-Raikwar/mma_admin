@@ -99,16 +99,18 @@ const GroupAssign = ({ handleGroupAssign, AgentData }) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(newData)
+            body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : newData})
         })
         .then(res => res.json())
         .then(res => {
             let updatedPendingWork = {};
             res.data.map((client, i) => {
                 updatedPendingWork[data[i]["Agent"]] = AgentData[data[i]["Agent"]];
+                return 0;
             })
             res.data.map((client, i) => {
                 updatedPendingWork[data[i]["Agent"]] = [...updatedPendingWork[data[i]["Agent"]], client._id]
+                return 0;
             })
 
             if(res.status === "true"){
@@ -118,7 +120,8 @@ const GroupAssign = ({ handleGroupAssign, AgentData }) => {
                         headers: {
                             "Content-Type": "application/json"
                         },
-                        body: JSON.stringify({agentId: {Username: key}, update: { Pending: updatedPendingWork[key] }})
+                        body: JSON.stringify(
+                            {Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : {agentId: {Username: key}, update: { Pending: updatedPendingWork[key] }}})
                     })
                     .then(res1 => res1.json())
                     .then(res1 => {
@@ -135,6 +138,8 @@ const GroupAssign = ({ handleGroupAssign, AgentData }) => {
                         setLoading(false);
                         setError(true);
                     });
+
+                    return 0;
                 })
             }
             else{

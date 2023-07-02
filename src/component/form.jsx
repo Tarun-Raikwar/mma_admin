@@ -33,7 +33,8 @@ const Form = ({ Selectedclient }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id: client._id, update })
+            body: JSON.stringify(
+                {Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : { id: client._id, update }})
         })
             .then(res => res.json())
             .then(data => {
