@@ -75,10 +75,17 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
         handleUpdateAgent(updatedAgent);
     }
 
+    const updateAgentDoneWork = (UpdatedDoneWork) => {
+        const updatedAgent = { ...setAgent, Done: UpdatedDoneWork };
+        handleUpdateAgent(updatedAgent);
+    }
+
 
     //delete pending form
     const delete_pending_form = (ind) => {
         setIsDeleting(true);
+        console.log(ind);
+        console.log("pending form");
         fetch("https://mma-server.onrender.com/delete_form", {
             method: "POST",
             headers: {
@@ -94,23 +101,24 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
                     console.log("failed");
                     return;
                 }
-
-
-                fetch("https://mma-server.onrender.com/updateAgent", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : {agentId: AgentData._id, update: {"Pending": [...setAgent.Pending.slice(0, ind), ...setAgent.Pending.slice(ind + 1, pending.length)]}}})
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        let pendingWork = [...setAgent.Pending.slice(0, ind), ...setAgent.Pending.slice(ind + 1, pending.length)];
-                        updateAgentPendingWork(pendingWork);
-                        console.log("delete");
-                        setIsDeleting(false);
+                else{
+                    fetch("https://mma-server.onrender.com/updateAgent", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : {agentId: {_id: AgentData._id}, update: {"Pending": [...setAgent.Pending.slice(0, ind), ...setAgent.Pending.slice(ind + 1, pending.length)]}}})
                     })
-                    .catch(err => console.log(err));
+                        .then(res => res.json())
+                        .then(data => {
+                            let pendingWork = [...setAgent.Pending.slice(0, ind), ...setAgent.Pending.slice(ind + 1, pending.length)];
+                            console.log(pendingWork);
+                            updateAgentPendingWork(pendingWork);
+                            console.log("delete");
+                            setIsDeleting(false);
+                        })
+                        .catch(err => console.log(err));
+                }
             })
             .catch(err => console.log("initial failed"))
     }
@@ -130,29 +138,28 @@ const Agent = ({ handleUpdateAgent, setAgent }) => {
         })
             .then(res => res.json())
             .then(data => {
-
-
                 if(data.status === "false"){
                     console.log("failed");
                     return;
                 }
-
-
-                fetch("https://mma-server.onrender.com/updateAgent", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : {agentId: AgentData._id, update: {"Done": [...setAgent.Done.slice(0, ind), ...setAgent.Done.slice(ind + 1, done.length)]}}})
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        let doneWork = [...setAgent.Done.slice(0, ind), ...setAgent.Done.slice(ind + 1, pending.length)];
-                        updateAgentPendingWork(doneWork);
-                        console.log("delete");
-                        setIsDeleting(false);
+                else{
+                    fetch("https://mma-server.onrender.com/updateAgent", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({Credentials: {username: sessionStorage.getItem('username'), password: sessionStorage.getItem('password')}, data : {agentId: {_id: AgentData._id}, update: {"Done": [...setAgent.Done.slice(0, ind), ...setAgent.Done.slice(ind + 1, done.length)]}}})
                     })
-                    .catch(err => console.log(err));
+                        .then(res => res.json())
+                        .then(data => {
+                            let doneWork = [...setAgent.Done.slice(0, ind), ...setAgent.Done.slice(ind + 1, pending.length)];
+                            updateAgentDoneWork(doneWork);
+                            console.log("delete");
+                            setIsDeleting(false);
+                        })
+                        .catch(err => console.log(err));
+                }
+
             })
             .catch(err => console.log("initial failed"))
     }
