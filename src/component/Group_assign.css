@@ -1,0 +1,90 @@
+.group_assign_continer{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.group_assign{
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    border-radius: 5px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.close_icon{
+    width: 100%;
+}
+
+.close_icon img{
+    float: right;
+    width: 10px;
+    height: 20px;
+    padding-top: 10px;
+}
+
+.close_icon img:hover{
+    cursor: pointer;
+}
+
+.group_assign_body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.group_assign_body input{
+    margin-bottom: 20px;
+    width: 200px;
+}
+
+.group_assign_body table{
+    border-collapse: collapse;
+}
+
+.cell{
+    border: 0.5px solid rgb(141, 138, 138);
+    text-align: center;
+    padding: 5px;
+}
+
+.Assign_to_all{
+    margin-top: 30px;
+    width: 100px;
+    height: 30px;
+    background-color: blue;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.Assign_to_all:hover{
+    cursor: pointer;
+}
+
+.multiple_assign_message{
+    margin-top: 40px;
+}
+
+.multiple_assign_message p{
+    text-align: center;
+}
+
+.loading{
+    color: blue;
+}
+.success{
+    color: green;
+}

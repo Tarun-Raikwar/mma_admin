@@ -1,0 +1,39 @@
+.client{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.table{
+    /* border: 2px solid red; */
+    width: 90%;
+    background-color: rgb(243, 243, 243);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.table td{
+    padding-right: 10px;
+    /* border: 2px solid black; */
+    padding: 2px 5px;
+}
+
+.table:hover{
+    cursor: pointer;
+}
+
+.delete_image{
+    /* border: 2px solid red; */
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete_image img{
+    width: 20px;
+}
+
+.delete_image img:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,26 @@
+.AgentCard{
+    /* border: 2px solid red; */
+    margin-bottom: 8px;
+    box-shadow: 0px 0px 2px 0px rgb(168, 168, 168);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+}
+
+.AgentCard:hover{
+    cursor: pointer;
+    background-color: rgb(228, 225, 225);
+    /* color: white; */
+}
+
+.value{
+    /* border: 2px solid red; */
+    font-weight: lighter;
+    padding-left: 20px;
+}
+
+.AgentCard td{
+    /* border: 2px solid red; */
+    padding-bottom: 1px;
+    font-size: 13px;
+}

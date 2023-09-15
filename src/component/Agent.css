@@ -1,0 +1,140 @@
+.AgentContainer{
+    height: 100%;
+    width: 80.5%;
+    box-shadow: 0.5px 0.5px 5px 0px rgb(168, 168, 168);
+    display: flex;
+    /* border: 1px solid black; */
+    background-color: white;
+    border-radius: 5px;
+}
+
+.Agent{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    padding: 5px 10px;
+    overflow: hidden;
+    /* align-items: center; */
+}
+
+.intro{
+    width: 85%;
+    display:  flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin: 10px 0px;
+    padding: 15px;
+    box-shadow: 0.5px 0.5px 5px 0px rgb(168, 168, 168);
+    height: 24%;
+    margin-left: 15px;
+}
+
+
+
+.intro table{
+    /* border: 2px solid black; */
+}
+.intro td{
+    /* border: 2px solid red; */
+    font-size: 13px;
+}
+.value{
+    padding-left: 20px;
+    font-weight: lighter;
+}
+
+
+
+
+
+
+
+.intro .buttons{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.intro .button button{
+    border: none;
+    width: 100%;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.intro .button button:hover{
+    cursor: pointer;
+}
+.assign{
+    background-color: black;
+}
+.pending_button{
+    background-color: red;
+}
+.done_button{
+    background-color: green;
+}
+
+
+
+
+
+
+.work{
+    display: flex;
+    /* padding-top: 20px; */
+    font-size: small;
+    height: 75%;
+    width: 100%;
+}
+
+.pending{
+    width: 100%;
+    /* border: 0.5px solid red; */
+    display: flex;
+    flex-direction: column;
+}
+
+.done{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* border: 0.5px solid green; */
+}
+
+
+.done .heading{
+    /* background-color: green; */
+    text-align: center;
+    color: green;
+    padding: 5px;
+}
+.pending .heading{
+    /* background-color: red; */
+    text-align: center;
+    color: red;
+    padding: 5px;
+}
+
+.content{
+    padding: 10px; 
+    flex-grow: 1;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    /* border: 1px solid red; */
+}
+
+
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

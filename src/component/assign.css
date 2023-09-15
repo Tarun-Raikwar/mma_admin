@@ -1,0 +1,61 @@
+.Assigning{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid rgb(247, 245, 245);
+    /* background-color: rgb(252, 252, 252); */
+}
+
+.Assigning .heading{
+    margin-bottom: 30px;
+    font-size: larger;
+    /* font-weight: bold; */
+}
+
+.message{
+    margin-bottom: 20px;
+    color: white;
+}
+
+.assigning{
+    color: blue;
+}
+.assigned{
+    color: green;
+}
+.error{
+    color: red;
+}
+
+.AssignForm{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.AssignForm input{
+    border: 1px solid black;
+    width: 60%;
+    padding: 7px;
+    margin-bottom: 15px;
+    border-radius: 2px;
+    border-radius: 5px;
+}
+
+.Assign_button{
+    /* width: 160px; */
+    width: 40%;
+    padding: 8px;
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.Assign_button:hover{
+    cursor: pointer;
+}

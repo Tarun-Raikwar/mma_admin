@@ -1,0 +1,35 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: 'Roboto', sans-serif; */
+}
+
+.Body{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.mainBody{
+  flex-grow: 1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.selectAgent{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectAgent p{
+  text-align: center;
+  color: blue;
+}

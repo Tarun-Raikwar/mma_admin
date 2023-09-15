@@ -1,0 +1,46 @@
+.fieldAgent{
+    height: 100%;
+    width: 19%;
+    box-shadow: 0px 0px 2px 0px rgb(168, 168, 168);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.fieldAgent::-webkit-scrollbar {
+    display: none;
+}
+
+.center{
+    justify-content: center;
+    align-items: center;
+}
+
+.error{
+    color: red;
+}
+
+.fieldAgent .button{
+    /* border: 2px solid red; */
+    padding: 10px;
+    width: 100%;
+}
+
+
+.fieldAgent .button button{
+    width: 100%;
+    height: 30px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.fieldAgent .button button:hover{
+    cursor: pointer;
+}
